@@ -15,9 +15,20 @@ export default function App() {
       .catch((myError) => console.log(myError));
   }, [menuItems]);
 
+  // GET data from menuItems array
+  const handleGetMenuItems = (e) => {
+    e.preventDefault()
+    // GET data - fetch in local API
+    fetch('http://localhost:4040/menu')
+    .then((apiResponse) => apiResponse.json())
+      .then((cleanJson) => setMenuItems(cleanJson))
+      .catch((myError) => console.log(myError))
+  }
+
   const handleAddMenuItem = (e) => {
     // stop from refreshing browser
     e.preventDefault();
+    if (!e) alert("You must fill out the fields")
 
     //const form = {title: title, description: description}
 
@@ -47,7 +58,8 @@ export default function App() {
         placeholder="Description"
         onChange={(e) => setForm({ ...form, description: e.target.value })}
       />
-      <button onClick={handleAddMenuItem}>Add</button>
+      <button onClick={handleGetMenuItems}>Get menu</button>
+      <button onClick={handleAddMenuItem}>Add menu item</button>
       <p>Item clicked with {itemToUpdate}</p>
       <ul>
         {menuItems.map((item) => {
