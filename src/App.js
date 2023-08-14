@@ -69,7 +69,7 @@ export default function App() {
       description: ""
     });
   }
-
+// Delete function 
   const handleDeleteMenuItem = (e) => {
     // stop from refreshing browser
     e.preventDefault()
