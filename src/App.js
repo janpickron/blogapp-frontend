@@ -3,12 +3,15 @@ import "./App.css";
 
 export default function App() {
   const [menuItems, setMenuItems] = useState([]);
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    title: "",
+    description: ""
+  });
   const [itemToUpdate, setItemToUpdate] = useState("");
 
   useEffect(() => {
     // fetch in local API
-    fetch("http://localhost:4040/")
+    fetch("http://localhost:4040")
       // get response and convert to JSON
       .then((apiResponse) => apiResponse.json())
       .then((cleanJson) => setMenuItems(cleanJson))
@@ -29,7 +32,6 @@ export default function App() {
     // stop from refreshing browser
     e.preventDefault();
  
-    //const form = {title: title, description: description}
     fetch("http://localhost:4040", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -39,13 +41,14 @@ export default function App() {
       .then((data) => setMenuItems(data))
       .catch((myError) => console.log(myError));
     console.log("Passed the Add part");
-    console.log('Title :', setForm.title)
-    console.log('Description :', setForm.description)
-    // this.form({ title:"", description:""})
+    console.log(`Title : ${form.title}`)
+    console.log(`Description : ${form.description}`)
+   
     setForm({
       title: "",
       description: ""
     });
+
   }
 
   const handleUpdateMenuItem = (e) => {
@@ -60,6 +63,11 @@ export default function App() {
      .then(res => res.json())
      .then(data => setMenuItems(data))
      .catch(myError => console.log(myError))
+// clear all input field values
+     setForm({
+      title: "",
+      description: ""
+    });
   }
 
   const handleDeleteMenuItem = (e) => {
@@ -74,6 +82,11 @@ export default function App() {
     .then(res => res.json())
     .then(data => setMenuItems(data))
     .catch(myError => console.log(myError))
+// clear all input field values
+    setForm({
+      title: "",
+      description: ""
+    });
   }
 
   return (
@@ -83,20 +96,22 @@ export default function App() {
         required
         type="text"
         name="title"
-        id="title"
+       value={form.title}
         placeholder="Title"
         onChange={(e) => setForm({ ...form, title: e.target.value })}
       />
       <input
         required
         type="text"
-        id="description"
+        value={form.description}
         name="description"
         placeholder="Description"
         onChange={(e) => setForm({ ...form, description: e.target.value })}
       />
+      <br></br>
       <button onClick={handleGetMenuItems}>Get menu</button>
       <button onClick={handleAddMenuItem}>Add menu item</button>
+      <br></br>
       <button onClick={handleUpdateMenuItem}>Update menu item</button>
       <button onClick={handleDeleteMenuItem}>Delete menu item</button>
       <p>Item clicked with {itemToUpdate}</p>
