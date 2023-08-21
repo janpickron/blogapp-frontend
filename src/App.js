@@ -27,6 +27,7 @@ export default function App() {
       .then((apiResponse) => apiResponse.json())
       .then((cleanJson) => setMenuItems(cleanJson))
       .catch((myError) => console.log(myError));
+      console.log("Fetching collection post to get data:", form);
   };
   // Adding new post
   const handleAddMenuItem = (e) => {
@@ -50,7 +51,7 @@ export default function App() {
         setMenuItems((prevItems) => [...prevItems, newMenuItem]);
       })
       .catch((error) => console.log(error));
-    console.log("Fetching POST to add data:", form);
+    console.log("Fetching collection post to add data:", form);
     setForm({
       title: "",
       content: "",
@@ -69,6 +70,7 @@ export default function App() {
       .then((res) => res.json())
       .then((data) => setMenuItems(data))
       .catch((myError) => console.log(myError));
+      console.log("Fetching collection post to update data:", form);
     // clear all input field values
     setForm({
       title: "",
@@ -92,6 +94,7 @@ export default function App() {
         .then((res) => res.json())
         .then((data) => setMenuItems(data))
         .catch((myError) => console.log(myError));
+        console.log("Fetching collection post to delete data:", form);
     } else {
       console.log("Deletion canceled by user");
     }
@@ -135,7 +138,7 @@ export default function App() {
       <button onClick={handleUpdateMenuItem}>Update menu item</button>
       <button onClick={handleDeleteMenuItem}>Delete menu item</button>
       <p>Item clicked with {itemToUpdate}</p>
-      <br />Table Blog
+      {/* <br />Table Blog
       <table>
         <thead>
           <tr>
@@ -157,7 +160,7 @@ export default function App() {
           })}
           </tr>
         </tbody>
-      </table>
+      </table> */}
       <ul>
         {menuItems.map((item, index) => {
           return (
