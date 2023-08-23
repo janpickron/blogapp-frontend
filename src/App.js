@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     // fetch in local API
-    fetch("http://localhost:4040/post")
+    fetch("http://localhost:4040/")
       // get response and convert to JSON
       .then((apiResponse) => apiResponse.json())
       .then((cleanJson) => setMenuItems(cleanJson))
@@ -23,7 +23,7 @@ export default function App() {
   const handleGetMenuItems = (e) => {
     e.preventDefault();
     // GET data - fetch in local API
-    fetch("http://localhost:4040/post")
+    fetch("http://localhost:4040/")
       .then((apiResponse) => apiResponse.json())
       .then((cleanJson) => setMenuItems(cleanJson))
       .catch((myError) => console.log(myError));
@@ -40,7 +40,7 @@ export default function App() {
     window.confirm("Cannot leave the field empty")
     return; // Don't proceed with the POST request
   }
-    fetch("http://localhost:4040/post", {
+    fetch("http://localhost:4040/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -62,7 +62,7 @@ export default function App() {
   const handleUpdateMenuItem = (e) => {
     // stop from refreshing browser
     e.preventDefault();
-    fetch(`http://localhost:4040/post/?title=${itemToUpdate}`, {
+    fetch(`http://localhost:4040/?title=${itemToUpdate}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -87,7 +87,7 @@ export default function App() {
       "Are you sure you want to delete this item?"
     );
     if (isConfirm) {
-      fetch(`http://localhost:4040/post/?title=${itemToUpdate}`, {
+      fetch(`http://localhost:4040/?title=${itemToUpdate}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
