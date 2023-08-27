@@ -1,0 +1,15 @@
+.btnGetPosts {
+    color: red;
+    margin-right: 5px;
+}
+
+.note {
+    font-style: italic;
+    font-size: small;
+}
+.hidden {
+    list-style-type: none;
+    padding: 0; /* Remove padding */
+    margin: 0;
+}
+
