@@ -1,15 +1,83 @@
-.btnGetPosts {
-    color: red;
-    margin-right: 5px;
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.note {
-    font-style: italic;
-    font-size: small;
+/* .all_posts {
+  margin-left: 10px;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* justify-content:space-between; 
+  justify-items: left;
+} 
+*/
+
+h2 {
+  margin: 30px;
 }
-.hidden {
+
+.date-size {
+  font-size: 10px;
+}
+
+.custom-card {
+  /*  width: calc(33.33% - 20px);  For three cards in a row */
+  /*  width: calc(25% - 20px);   for four cards in a row */
+  border: 1px solid #a2a1a1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+  margin: 1rem 0;
+  width:200px;
+  height: 100px;
+}
+
+header {
+    width: 100%;
+    background-color: black;
+}
+
+ul {
+    padding: 25px;
     list-style-type: none;
-    padding: 0; /* Remove padding */
-    margin: 0;
+  }
+
+li {
+  float: left;
+  padding: 0px 20px;
+  margin-top: -10px;
+ 
+}
+.header-text {
+  float: right;
+  color: white;
 }
 
+li a {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: darksalmon;
+}
+
+.form {
+  width: 400px;
+  margin-left: 60px;
+  margin-top: 30px;
+}
+
+.form label {
+  margin-right: 20px;
+}
+
+.form input {
+  margin-left: 20px;
+}
