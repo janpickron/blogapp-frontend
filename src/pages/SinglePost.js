@@ -4,19 +4,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 const SinglePost = () => {
   const location = useLocation();
   const { title, content, date } = location.state;
-  const [form, setForm] = useState({title: title, content: content, date:date });
+  const [form, setForm] = useState({
+    title: title,
+    content: content,
+    date: date,
+  });
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   // set new loading state variable = false
-
   const handleUpdatePost = (e) => {
     // set loading variable to = true
     e.preventDefault();
-    console.log("sending to API for updating post");
-
     // Checking to see if there is no empty data or input
     if (!form.title || !form.content || !form.date) {
-      console.log("Form fields cannot be empty");
       window.confirm(
         "Cannot leave the field empty. Please select the title to update."
       );
@@ -28,11 +28,9 @@ const SinglePost = () => {
       body: JSON.stringify(form),
     })
       .then((res) => res.json())
-      //    .then((data) => setMenuItems(data))
       .then(() => navigate("/"))
       .catch((myError) => console.log(myError));
-    console.log("Fetching collection post to update data:", form);
-
+    window.location.href = "/";
   };
 
   const handleDeletePost = (e) => {
@@ -46,20 +44,16 @@ const SinglePost = () => {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
-
         .then((res) => res.json())
-        // .then((data) => setMenuItems(data))
         .then(() => navigate("/"))
         .catch((myError) => console.log(myError));
-        
-      console.log("Fetching collection post to delete data:", form);
       // clear all input field values
       setForm({
         title: "",
         content: "",
         date: "",
       });
-     
+      window.location.href = "/";
     } else {
       console.log("Deletion canceled by user");
     }
@@ -70,15 +64,10 @@ const SinglePost = () => {
   };
 
   return (
-    <div className="home_all_posts_container">
-      
-      {/* <h1>{title}</h1>
-      <h4>{date}</h4>
-      <p>{content}</p> */}
- <h2>Update / Delete Post Item</h2>
+    <div className="container">
+      <h3>Update / Delete Post Item</h3>
       {showForm || (
         <form className="form">
-         
           <p></p>
           Date:
           <input
@@ -99,7 +88,7 @@ const SinglePost = () => {
             placeholder="Title"
             onChange={(e) => handleForm(e)}
           />
-          <br/>
+          <br />
           Content:
           <input
             required
@@ -114,9 +103,10 @@ const SinglePost = () => {
           <br></br>
           {/* // if loading true  then show spinner */}
           <button onClick={handleUpdatePost}>Update post</button>
+          <button onClick={handleDeletePost}>Delete Post</button>
         </form>
       )}
-      <button onClick={handleDeletePost}>Delete Post</button>
+
       <button onClick={() => setShowForm(!showForm)}>Show Post Form</button>
     </div>
   );

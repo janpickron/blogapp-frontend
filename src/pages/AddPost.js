@@ -2,17 +2,13 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 const AddPost = () => {
-  // const [postItems, setPostItems] = useState([]);
   const [form, setForm] = useState({});
-
   // Adding new post
   const handleAddPost = (e) => {
     // stop from refreshing browser
     e.preventDefault();
-
     // Checking to see if there is no empty data or input
     if (!form.title || !form.content || !form.date) {
-      console.log("Form fields cannot be empty");
       window.confirm("Cannot leave the field empty");
       return; // Don't proceed with the POST request
     }
@@ -24,8 +20,6 @@ const AddPost = () => {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
-    console.log("Post sent to API");
-    console.log("Fetching collection post to add data:", form);
     setForm({
       title: "",
       content: "",
@@ -39,8 +33,8 @@ const AddPost = () => {
   };
 
   return (
-    <div className="home_all_posts_container">
-      <h2>Add Post</h2>
+    <div className="container">
+      <h3>Add Post</h3>
       <form className="form">
         Date:
         <input
@@ -62,7 +56,7 @@ const AddPost = () => {
           onChange={(e) => handleForm(e)}
         />
         <br />
-        Content: 
+        Content:
         <input
           required
           type="text"
@@ -71,8 +65,7 @@ const AddPost = () => {
           placeholder="Type the content here"
           onChange={(e) => handleForm(e)}
         />
-        <br />
-        <br />
+        <br /> <br />
         <Button onClick={handleAddPost}>Add post</Button>
       </form>
     </div>

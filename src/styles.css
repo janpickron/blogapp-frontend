@@ -14,16 +14,16 @@ body {
 } 
 */
 
-h2 {
-  margin: 30px;
+h3 {
+  margin: 5px;
 }
 
 .date-size {
-  font-size: 10px;
+  font-size:xx-small;
 }
 
 .custom-card {
-  /*  width: calc(33.33% - 20px);  For three cards in a row */
+   /* width: calc(33.33% - 20px); For three cards in a row */
   /*  width: calc(25% - 20px);   for four cards in a row */
   border: 1px solid #a2a1a1;
   border-radius: 10px;
@@ -31,9 +31,17 @@ h2 {
   text-decoration: none;
   color: black;
   transition: 0.3s;
-  margin: 1rem 0;
-  width:200px;
-  height: 100px;
+  margin: 1rem 1rem;
+}
+
+.card-img-top {
+  width: 70%;
+height: 20vh;
+object-fit: cover;
+}
+
+.card-title-postcard{
+  font-size:x-small;
 }
 
 header {
@@ -48,9 +56,10 @@ ul {
 
 li {
   float: left;
-  padding: 0px 20px;
+  padding: 0px 5px;
   margin-top: -10px;
- 
+ margin-right: 20px;
+ font-size:small;
 }
 .header-text {
   float: right;
@@ -70,7 +79,7 @@ li a:hover {
 
 .form {
   width: 400px;
-  margin-left: 60px;
+  margin-left: 5px;
   margin-top: 30px;
 }
 
