@@ -7,15 +7,26 @@ const AddPost = () => {
   const handleAddPost = (e) => {
     // stop from refreshing browser
     e.preventDefault();
+
+    // Trim the title and content to remove whitespace from both side of string
+    const trimmedTitle = form.title.trim();
+    const trimmedContent = form.content.trim();
+
     // Checking to see if there is no empty data or input
-    if (!form.title || !form.content || !form.date) {
+    if (!trimmedTitle || !trimmedContent || !form.date) {
       window.confirm("Cannot leave the field empty");
       return; // Don't proceed with the POST request
+    }
+
+    const trimmedForm = {
+      title: trimmedTitle,
+      content: trimmedContent,
+      date: form.date
     }
     fetch("http://localhost:4040/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify(trimmedForm),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))

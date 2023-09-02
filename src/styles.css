@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
@@ -25,8 +25,7 @@ header {
 
 footer {
   text-align: center;
-  width: auto;
-  padding: 12px;
+  width: 100%;
 }
 
 ul {
@@ -78,10 +77,6 @@ li a:hover {
   width: 19.2rem;
 }
 
-.spinner-text-center {
-align-items: center;
-}
-
 .last-post {
   /* Add styling to make the last post justified left */
   margin-right: auto;
@@ -95,7 +90,7 @@ align-items: center;
 }
 
 .card-title-postcard {
-  font-size:x-large;
+  font-size: x-large;
   padding-top: 5px;
 }
 

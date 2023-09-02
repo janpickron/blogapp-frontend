@@ -22,5 +22,5 @@ const Home = () => {
       <div className="d-flex flex-wrap justify-content-start last-post">{allPosts}</div>
     </div>
   );
-};
+}
 export default Home;
