@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import { Spinner } from "react-bootstrap";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -12,8 +14,11 @@ const SinglePost = () => {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   // set new loading state variable = false
+  const [loading, setLoading] = useState(false);
+  
   const handleUpdatePost = (e) => {
     // set loading variable to = true
+   setLoading(true)
     e.preventDefault();
     // Checking to see if there is no empty data or input
     if (!form.title || !form.content || !form.date) {
@@ -63,51 +68,80 @@ const SinglePost = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  if (loading)
   return (
-    <div className="container">
-      <h3>Update / Delete Post Item</h3>
+    <Spinner animation="border" variant="primary" className="text-center">
+
+    </Spinner>
+)
+  return (
+    <div className="container mx-auto">
+      <h1>Update / Delete Post</h1>
       {showForm || (
         <form className="form">
           <p></p>
-          Date:
-          <input
-            required
-            type="date"
-            name="date"
-            value={form.date}
-            id="date"
-            onChange={(e) => handleForm(e)}
-          />
-          <br />
-          Title:
-          <input
-            required
-            type="text"
-            name="title"
-            value={form.title}
-            placeholder="Title"
-            onChange={(e) => handleForm(e)}
-          />
-          <br />
-          Content:
-          <input
-            required
-            type="text"
-            multiline
-            maxRows={4}
-            value={form.content}
-            name="content"
-            placeholder="Type the content here"
-            onChange={(e) => handleForm(e)}
-          />
-          <br></br>
-          {/* // if loading true  then show spinner */}
-          <button onClick={handleUpdatePost}>Update post</button>
-          <button onClick={handleDeletePost}>Delete Post</button>
+          <table>
+            <tr>
+              <td>Date:</td>
+              <td>
+                {" "}
+                <input
+                  required
+                  type="date"
+                  name="date"
+                  value={form.date}
+                  id="date"
+                  onChange={(e) => handleForm(e)}
+                />
+              </td>
+            </tr>
+            <p></p>
+            <tr>
+              <td>Title:</td>
+              <td>
+                <input
+                  required
+                  type="text"
+                  size={40}
+                  name="title"
+                  value={form.title}
+                  placeholder="Title"
+                  onChange={(e) => handleForm(e)}
+                />
+              </td>
+            </tr>
+            <p></p>
+            <tr>
+              <td> Content:</td>
+              <td>
+                <input
+                  required
+                  type="text"
+                  size={40}
+                  value={form.content}
+                  name="content"
+                  placeholder="Type the content here"
+                  onChange={(e) => handleForm(e)}
+                />
+              </td>
+            </tr>
+          </table>
+          <br /> <br />
+          {/* if loading true  then show spinner */}
+       
+
+          <Button className="btn-margin" onClick={handleUpdatePost}>
+            Update post
+          </Button>
+          <Button className="btn-margin" onClick={handleDeletePost}>
+            Delete Post
+          </Button>
         </form>
       )}
 
-      <button onClick={() => setShowForm(!showForm)}>Show Post Form</button>
+      <Button className="btn-margin" onClick={() => setShowForm(!showForm)}>
+        Show Post Form
+      </Button>
     </div>
   );
 };

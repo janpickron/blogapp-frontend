@@ -3,11 +3,10 @@ import Card from "react-bootstrap/Card";
 
 export const PostCard = ({ post, index }) => {
   return (
-    <Link state={post} to="/single-post" className="custom-card">
-      <Card style={{ width: "16rem" }}>
+    <Link state={post} to="/single-post" className="link-posts">
+      <Card className="custom-card">
         <Card.Body>
-          <Card.Img
-            className="card-img-top"
+          <Card.Img className="card-img-top"
             variant="top"
             src={`https://source.unsplash.com/random?sig=${index}`}
             alt=""
@@ -15,10 +14,8 @@ export const PostCard = ({ post, index }) => {
           <Card.Title className="card-title-postcard">
             <b>{post.title}</b>
           </Card.Title>
-          <Card.Subtitle className="card-subtitle mb-2 text-muted">
-            {post.date}
-          </Card.Subtitle>
-          <Card.Text>{post.content}</Card.Text>
+          <Card.Subtitle className="date-size">{post.date}</Card.Subtitle>
+          <Card.Text className="card-content">{post.content}</Card.Text>
         </Card.Body>
       </Card>
     </Link>

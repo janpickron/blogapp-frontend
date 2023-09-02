@@ -33,40 +33,58 @@ const AddPost = () => {
   };
 
   return (
-    <div className="container">
-      <h3>Add Post</h3>
+    <div className="container mx-auto">
+      <h1>Add Post</h1>
       <form className="form">
-        Date:
-        <input
-          required
-          type="date"
-          name="date"
-          value={form.date}
-          id="date"
-          onChange={(e) => handleForm(e)}
-        />
-        <br />
-        Title:{" "}
-        <input
-          required
-          type="text"
-          name="title"
-          value={form.title}
-          placeholder="Title"
-          onChange={(e) => handleForm(e)}
-        />
-        <br />
-        Content:
-        <input
-          required
-          type="text"
-          value={form.content}
-          name="content"
-          placeholder="Type the content here"
-          onChange={(e) => handleForm(e)}
-        />
-        <br /> <br />
-        <Button onClick={handleAddPost}>Add post</Button>
+        <table>
+          <tr>
+            <td> Date: </td>
+            <td>
+              <input
+                required
+                type="date"
+                name="date"
+                value={form.date}
+                id="date"
+                onChange={(e) => handleForm(e)}
+              />
+            </td>
+          </tr>
+          <p></p>
+          <tr>
+            <td> Title:</td>
+            <td>
+              <input
+                required
+                type="text"
+                size={40}
+                name="title"
+                value={form.title}
+                placeholder="Title"
+                onChange={(e) => handleForm(e)}
+              />
+            </td>
+          </tr>
+          <p></p>
+          <tr>
+            <td>Content:</td>
+            <td>
+              <input
+                required
+                type="text"
+                size={40}
+                value={form.content}
+                name="content"
+                placeholder="Type the content here"
+                onChange={(e) => handleForm(e)}
+              />
+            </td>
+          </tr>
+        </table>
+        <p></p>
+        <div className="btn btn-primary">
+          <Button onClick={handleAddPost}>Add post</Button>
+        </div>
       </form>
     </div>
   );

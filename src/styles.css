@@ -1,92 +1,119 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 body {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* .all_posts {
-  margin-left: 10px;
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  /* justify-content:space-between; 
-  justify-items: left;
-} 
-*/
-
-h3 {
-  margin: 5px;
-}
-
-.date-size {
-  font-size:xx-small;
-}
-
-.custom-card {
-   /* width: calc(33.33% - 20px); For three cards in a row */
-  /*  width: calc(25% - 20px);   for four cards in a row */
-  border: 1px solid #a2a1a1;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  color: black;
-  transition: 0.3s;
-  margin: 1rem 1rem;
-}
-
-.card-img-top {
-  width: 70%;
-height: 20vh;
-object-fit: cover;
-}
-
-.card-title-postcard{
-  font-size:x-small;
+h1 {
+  margin-left: 12px;
 }
 
 header {
-    width: 100%;
-    background-color: black;
+  width: 100%;
+  background-color: black;
+}
+
+.header-text {
+  float: right;
+}
+
+footer {
+  text-align: center;
+  width: auto;
+  padding: 12px;
 }
 
 ul {
-    padding: 25px;
-    list-style-type: none;
-  }
+  padding: 30px;
+  list-style-type: none;
+}
 
 li {
   float: left;
   padding: 0px 5px;
-  margin-top: -10px;
- margin-right: 20px;
- font-size:small;
-}
-.header-text {
-  float: right;
+  margin-top: -12px;
+  margin-right: 20px;
+  font-size: large;
   color: white;
 }
 
 li a {
-  display: flex;
-  flex-direction: row;
   color: white;
   text-decoration: none;
+  display: block;
 }
 
 li a:hover {
   color: darksalmon;
 }
 
-.form {
-  width: 400px;
-  margin-left: 5px;
-  margin-top: 30px;
+.container {
+  width: 100%;
+  margin: 3rem auto;
 }
 
-.form label {
-  margin-right: 20px;
+.btn-margin {
+  margin: 5px;
+}
+
+.link-posts {
+  text-decoration: none;
+}
+
+.custom-card {
+  /* width: calc(33.33% - 20px);  For three cards in a row */
+  /* width: calc(25% - 20px);    for four cards in a row */
+  border: 1px solid #a2a1a1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 1rem 10px;
+  text-decoration: none;
+  height: 300px;
+  width: 19.2rem;
+}
+
+.spinner-text-center {
+align-items: center;
+}
+
+.last-post {
+  /* Add styling to make the last post justified left */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 18vh;
+  object-fit: cover;
+}
+
+.card-title-postcard {
+  font-size:x-large;
+  padding-top: 5px;
+}
+
+.date-size {
+  font-size: medium;
+}
+
+.card-content {
+  font-size: large;
+}
+
+.form {
+  width: 500px;
+  margin-left: 13px;
+  margin-top: 30px;
 }
 
 .form input {
   margin-left: 20px;
+  border-style: groove;
 }
