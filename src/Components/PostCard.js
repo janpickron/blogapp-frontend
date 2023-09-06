@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 export const PostCard = ({ post, index }) => {
   return (
-    <Link state={post} to="/single-post" className="link-posts">
+    <Link state={post} to={`/single-post/${post._id}`} className="link-posts">
       <Card className="custom-card">
         <Card.Body>
           <Card.Img className="card-img-top"

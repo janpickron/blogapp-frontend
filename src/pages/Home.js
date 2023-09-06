@@ -6,7 +6,7 @@ const Home = () => {
 
   useEffect(() => {
     // fetch in local API
-    fetch("http://localhost:4040/")
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}`)
       // get response and convert to JSON
       .then((apiResponse) => apiResponse.json())
       .then((cleanJson) => setPosts(cleanJson))

@@ -13,7 +13,7 @@ export default function App() {
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/single-post" element={<SinglePost />} />
+      <Route path="/single-post/:id" element={<SinglePost />} />
       <Route path="/add-post" element={<AddPost />} />
       <Route path="*" element={<h2>Page not Found</h2>} />
     </Routes>
