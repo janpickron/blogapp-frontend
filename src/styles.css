@@ -116,3 +116,19 @@ li a:hover {
   margin-left: 20px;
   border-style: groove;
 }
+
+.show-title {
+  font-size:xx-large;
+
+}
+
+.show-date {
+  font-size: medium;
+  margin-top:7px;
+}
+
+.show-content {
+  font-size:x-large;
+  margin-left: 13px;
+  
+}

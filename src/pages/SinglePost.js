@@ -11,13 +11,23 @@ const SinglePost = () => {
   const navigate = useNavigate();
   const params = useParams();
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const userLS = localStorage.getItem("User");
+
+    if (userLS) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/single-post/${params.id}`)
       // get response and convert to JSON
-      .then(res => res.json())
-      .then(data => setForm(data))
-      .catch(err => console.log(err));
-  }, [params.id])
+      .then((res) => res.json())
+      .then((data) => setForm(data))
+      .catch((err) => console.log(err));
+  }, [params.id]);
 
   const handleUpdatePost = (e) => {
     // set loading variable to = true
@@ -44,7 +54,7 @@ const SinglePost = () => {
     const trimmedForm = {
       title: trimmedTitle,
       content: trimmedContent,
-      date: form.date
+      date: form.date,
     };
     console.log("Complete trimmedForm: ", trimmedForm);
     console.log("It is working with form.title:", form.title);
@@ -58,7 +68,8 @@ const SinglePost = () => {
       .then((data) => {
         // Log the response data
         console.log("Response Data:", data);
-        navigate("/")})
+        navigate("/");
+      })
       .catch((err) => console.error(err));
     console.log("after fetch:", trimmedForm);
   };
@@ -101,68 +112,78 @@ const SinglePost = () => {
         className="w-25 h-25 img-single-post"
         alt=""
       />
-      <h1>Title: {form.title} </h1>
-      <h3>Date: {form.date}</h3>
-      <p>Content: {form.content}</p>
-      {showForm || (
-        <form className="form">
-          <table>
-            <tbody>
-              <tr>
-                <td>Date:</td>
-                <td>
-                  <input
-                    required
-                    type="date"
-                    name="date"
-                    defaultValue={form.date}
-                    id="date"
-                    onChange={(e) => handleForm(e)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>Title:</td>
-                <td>
-                  <input
-                    required
-                    type="text"
-                    size={40}
-                    name="title"
-                    defaultValue={form.title}
-                    placeholder="Title"
-                    onChange={(e) => handleForm(e)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>Content:</td>
-                <td>
-                  <input
-                    required
-                    type="text"
-                    size={40}
-                    defaultValue={form.content}
-                    name="content"
-                    placeholder="Type the content here"
-                    onChange={(e) => handleForm(e)}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <br /> <br />
-          <Button className="btn-margin" onClick={handleUpdatePost}>
-            Update post
-          </Button>
-        </form>
+      <h3 className="show-date">Date: {form.date}</h3>
+      <h1 className="show-title">Title: {form.title} </h1>
+      <p className="show-content">Content: {form.content}</p>
+
+      {loggedIn && (
+        <>
+          {showForm && (
+            <form className="form">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Date:</td>
+                    <td>
+                      <input
+                        required
+                        type="date"
+                        name="date"
+                        defaultValue={form.date}
+                        id="date"
+                        onChange={(e) => handleForm(e)}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Title:</td>
+                    <td>
+                      <input
+                        required
+                        type="text"
+                        size={40}
+                        name="title"
+                        defaultValue={form.title}
+                        placeholder="Title"
+                        onChange={(e) => handleForm(e)}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Content:</td>
+                    <td>
+                      <input
+                        required
+                        type="text"
+                        size={40}
+                        defaultValue={form.content}
+                        name="content"
+                        placeholder="Type the content here"
+                        onChange={(e) => handleForm(e)}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br /> <br />
+              <Button className="btn-margin" onClick={handleUpdatePost}>
+                Update post
+              </Button>
+            </form>
+          )}
+        </>
       )}
-      <Button className="btn-margin" onClick={handleDeletePost}>
-        Delete Post
-      </Button>
-      <Button className="btn-margin" onClick={() => setShowForm(!showForm)}>
-        Show Post Form
-      </Button>
+
+      {loggedIn && (
+        <>
+          <Button className="btn-margin" onClick={handleDeletePost}>
+            Delete Post
+          </Button>
+          <Button className="btn-margin" onClick={() => setShowForm(!showForm)}>
+            Show Post Form
+          </Button>
+        </>
+      )}
     </div>
   );
 };
