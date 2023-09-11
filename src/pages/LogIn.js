@@ -51,7 +51,7 @@ const LogIn = () => {
         <table>
           <tbody>
             <tr>
-              <td>Email: </td>
+              <td><label for="email">Email: </label></td>
               <td>
                 <input
                   required
@@ -66,13 +66,14 @@ const LogIn = () => {
               </td>
             </tr>
             <tr>
-              <td>Password: </td>
+              <td><label for="password">Password: </label> </td>
               <td>
                 <input
                   required
                   type="password"
                   size={40}
                   name="password"
+                  id="password"
                   placeholder="Enter password"
                   onChange={(e) => handleForm(e)}
                 />

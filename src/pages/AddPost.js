@@ -47,7 +47,7 @@ const AddPost = () => {
         <table>
           <tbody>
             <tr>
-              <td> Date: </td>
+              <td><label for="date">Date: </label></td>
               <td>
                 <input
                   required
@@ -59,12 +59,13 @@ const AddPost = () => {
               </td>
             </tr>
             <tr>
-              <td> Title:</td>
+              <td><label for="title">Title: </label></td>
               <td>
                 <input
                   required
                   type="text"
                   size={40}
+                  id="title"
                   name="title"
                   placeholder="Title"
                   onChange={(e) => handleForm(e)}
@@ -72,13 +73,14 @@ const AddPost = () => {
               </td>
             </tr>
             <tr>
-              <td>Content:</td>
+              <td><label for="content">Content: </label></td>
               <td>
                 <input
                   required
                   type="text"
                   size={40}
                   name="content"
+                  id="content"
                   placeholder="Type the content here"
                   onChange={(e) => handleForm(e)}
                 />

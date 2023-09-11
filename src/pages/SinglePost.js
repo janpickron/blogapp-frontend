@@ -123,7 +123,7 @@ const SinglePost = () => {
               <table>
                 <tbody>
                   <tr>
-                    <td>Date:</td>
+                    <td><label for="date">Date: </label></td>
                     <td>
                       <input
                         required
@@ -136,13 +136,14 @@ const SinglePost = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td>Title:</td>
+                    <td><label for="title">Title: </label></td>
                     <td>
                       <input
                         required
                         type="text"
                         size={40}
                         name="title"
+                        id="title"
                         defaultValue={form.title}
                         placeholder="Title"
                         onChange={(e) => handleForm(e)}
@@ -150,12 +151,13 @@ const SinglePost = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td>Content:</td>
+                    <td><label for="content">Content: </label></td>
                     <td>
                       <input
                         required
                         type="text"
                         size={40}
+                        id="content"
                         defaultValue={form.content}
                         name="content"
                         placeholder="Type the content here"
