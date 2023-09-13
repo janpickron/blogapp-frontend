@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const AddPost = () => {
   const [form, setForm] = useState({});
+  const navigate = useNavigate();
 
   // Adding new post
   const handleAddPost = (e) => {
@@ -30,10 +32,12 @@ const AddPost = () => {
       body: JSON.stringify(trimmedForm),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // Log the response data
+        console.log("Response Data:", data);
+        navigate("/");
+      })
       .catch((error) => console.error(error));
-
-    window.location.href = "/";
   };
 
   const handleForm = (e) => {
@@ -47,7 +51,9 @@ const AddPost = () => {
         <table>
           <tbody>
             <tr>
-              <td><label for="date">Date: </label></td>
+              <td>
+                <label htmlFor="date">Date: </label>
+              </td>
               <td>
                 <input
                   required
@@ -59,7 +65,9 @@ const AddPost = () => {
               </td>
             </tr>
             <tr>
-              <td><label for="title">Title: </label></td>
+              <td>
+                <label htmlFor="title">Title: </label>
+              </td>
               <td>
                 <input
                   required
@@ -73,7 +81,9 @@ const AddPost = () => {
               </td>
             </tr>
             <tr>
-              <td><label for="content">Content: </label></td>
+              <td>
+                <label htmlFor="content">Content: </label>
+              </td>
               <td>
                 <input
                   required

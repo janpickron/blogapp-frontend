@@ -40,15 +40,12 @@ const SinglePost = () => {
       window.confirm(
         "Cannot leave the field empty. Please select the title to update."
       );
-      console.log("cannot leave the fields empty");
       return; // Don't proceed with the PUT request
     }
 
     // Trim whitespace of title and content values
     const trimmedTitle = form.title.trim();
     const trimmedContent = form.content.trim();
-    console.log("trimmed Title: ", trimmedTitle);
-    console.log("trimmed Content:", trimmedContent);
 
     // new trimmed form with trimmed title and content
     const trimmedForm = {
@@ -56,8 +53,6 @@ const SinglePost = () => {
       content: trimmedContent,
       date: form.date,
     };
-    console.log("Complete trimmedForm: ", trimmedForm);
-    console.log("It is working with form.title:", form.title);
 
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/single-post/${params.id}`, {
       method: "PUT",
@@ -71,7 +66,6 @@ const SinglePost = () => {
         navigate("/");
       })
       .catch((err) => console.error(err));
-    console.log("after fetch:", trimmedForm);
   };
 
   const handleDeletePost = (e) => {
@@ -123,7 +117,9 @@ const SinglePost = () => {
               <table>
                 <tbody>
                   <tr>
-                    <td><label for="date">Date: </label></td>
+                    <td>
+                      <label htmlFor="date">Date: </label>
+                    </td>
                     <td>
                       <input
                         required
@@ -136,7 +132,9 @@ const SinglePost = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td><label for="title">Title: </label></td>
+                    <td>
+                      <label htmlFor="title">Title: </label>
+                    </td>
                     <td>
                       <input
                         required
@@ -151,7 +149,9 @@ const SinglePost = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td><label for="content">Content: </label></td>
+                    <td>
+                      <label htmlFor="content">Content: </label>
+                    </td>
                     <td>
                       <input
                         required

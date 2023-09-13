@@ -18,24 +18,22 @@ const LogIn = () => {
 
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/login`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("data 1 -> ", data === true);
         if (data.isAuthenticated) {
           console.log("User credentials is FOUND.");
           localStorage.setItem("User", JSON.stringify(data));
           navigate("/");
-        } else    
-       {
-        navigate("/add-user");
-       }
-           
+        } else {
+          console.log("data 2 -> ", data === true);
+          navigate("/add-user");
+        }
       })
-      
       .catch((error) => console.error(error));
-    console.log("end of the loop");
   };
 
   const handleForm = (e) => {
@@ -44,49 +42,52 @@ const LogIn = () => {
 
   return (
     <>
-   
-    <div className="container mx-auto">
-      <h1>Log In</h1>
-      <form className="form">
-        <table>
-          <tbody>
-            <tr>
-              <td><label for="email">Email: </label></td>
-              <td>
-                <input
-                  required
-                  type="email"
-                  pattern=".+@globex\.com"
-                  size={30}
-                  name="email"
-                  id="email"
-                  placeholder="Enter your email address"
-                  onChange={(e) => handleForm(e)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label for="password">Password: </label> </td>
-              <td>
-                <input
-                  required
-                  type="password"
-                  size={40}
-                  name="password"
-                  id="password"
-                  placeholder="Enter password"
-                  onChange={(e) => handleForm(e)}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p></p>
-        <div className="btn btn-primary">
-          <Button onClick={handleLogIn}>Submit</Button>
-        </div>
-      </form>
-    </div>
+      <div className="container mx-auto">
+        <h1>Log In</h1>
+        <form className="form">
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label htmlFor="email">Email: </label>
+                </td>
+                <td>
+                  <input
+                    required
+                    type="email"
+                    pattern=".+@globex\.com"
+                    size={30}
+                    name="email"
+                    id="email"
+                    placeholder="Enter your email address"
+                    onChange={(e) => handleForm(e)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="password">Password: </label>
+                </td>
+                <td>
+                  <input
+                    required
+                    type="password"
+                    size={40}
+                    name="password"
+                    id="password"
+                    placeholder="Enter password"
+                    onChange={(e) => handleForm(e)}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p></p>
+          <div className="btn btn-primary">
+            <Button onClick={handleLogIn}>Submit</Button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };
