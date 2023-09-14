@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
   const [form, setForm] = useState({});
+  const [message, setMessage] = useState()
   const navigate = useNavigate();
 
   const handleLogIn = (e) => {
@@ -27,10 +28,12 @@ const LogIn = () => {
         if (data.isAuthenticated) {
           console.log("User credentials is FOUND.");
           localStorage.setItem("User", JSON.stringify(data));
+          setMessage("User logging in")
           navigate("/");
         } else {
           console.log("data 2 -> ", data === true);
-          navigate("/add-user");
+          setMessage(data.error)
+          navigate("/login");
         }
       })
       .catch((error) => console.error(error));
@@ -86,6 +89,8 @@ const LogIn = () => {
           <div className="btn btn-primary">
             <Button onClick={handleLogIn}>Submit</Button>
           </div>
+          <br /><br />
+          <p>{message}</p>
         </form>
       </div>
     </>

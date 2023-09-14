@@ -21,7 +21,6 @@ const Header = () => {
          {/* this will only show if loggedIn is true */}
         {loggedIn && ( 
         <li>
-          {/* <a href="/add-post">Add Post</a> */}
           <Link to="/add-post">Add Post</Link>
         </li>
         )}

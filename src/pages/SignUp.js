@@ -16,6 +16,7 @@ const SignUp = () => {
       return; // do not proceed with the POST method request
     }
 
+    // Sending data to API to add new user credentials
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/add-user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
