@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Full-Stack Blog Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+The Full-Stack Blog Application is a web-based platform that allows users to create, read, update, and delete blog posts. The application is built using JavaScript, utilizing React for the frontend and Node.js with Express for the backend.
 
-In the project directory, you can run:
+## Key Features: MVP (Minimal Valuable Product)
 
-### `npm start`
+- **Create:** Users can create blog posts with titles, content, and dates.
+- **Read:** Visitors can browse published blogs and read their content.
+- **Update:** Users can edit and update their blog posts.
+- **Delete:** Users can delete blog posts.
+- **User Authentication:** Authenticated users can create new blog posts. The application supports user registration and login functionality for secure access to blog features.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React: Used to create a dynamic and responsive user interface.
+- React Router: Handles client-side routing for smooth navigation within the application.
 
-### `npm test`
+### Backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js: Serves as the backend runtime environment.
+- Express.js: The web application framework for handling routes and API endpoints.
+- MongoDB: Stores blog posts and user data.
+- Postman: An object modeling tool for interacting with the MongoDB database.
 
-### `npm run build`
+### Styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- CSS: Used for styling.
+- CSS framework -  Bootstrap for an aesthetically pleasing and consistent user interface.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application will be deployed on a cloud platform like Google Cloud Run, ensuring easy access for users without local installation.
 
-### `npm run eject`
+## Purpose
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+By creating this Full-Stack Blog Application, we aim to provide a user-friendly and feature-rich platform for bloggers to share their thoughts and ideas with a wider audience. The combination of React and Node Express enables seamless data flow and ensures a high-performance blogging experience.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Snapshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Add a new User Account
+![image](./src/snapshot_add_user_account.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Log In 
+![image](./src/snapshot_log_in_user.png)
 
-## Learn More
+## Home Page
+![image](./src/snapshot_home.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Add New Post
+![image](./src/snapshot_add_post.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## See Single Post
+![image](./src/snapshot_single_post.png)
 
-### Code Splitting
+## Update Post
+![image](./src/snapshot_update_post.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Link to live Full Stack Blog App
+[click here] (https://mern-blog-app-jan.web.app/)
