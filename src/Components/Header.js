@@ -1,16 +1,20 @@
-import { Link } from "react-router-dom"
-import { useEffect, useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+// import { useEffect, useState } from "react";
+import { useAuth } from "../App";
 
 const Header = () => {
-  const [loggedIn, setLoggedIn] = useState(false)
+  // use the useAuth() hook to access authentication context
+  const auth = useAuth();
+  console.log(auth);
 
-  useEffect(() => {
-    const userLS = localStorage.getItem('User')
-
-    if (userLS) {
-      setLoggedIn(true)
-    }
-  }, [])
+  // const [loggedIn, setLoggedIn] = useState(false)
+  // useEffect(() => {
+  //   const userLS = localStorage.getItem('User')
+  //   if (userLS) {
+  //     setLoggedIn(true)
+  //   }
+  // }, [])
 
   return (
     <header>
@@ -18,28 +22,34 @@ const Header = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-         {/* this will only show if loggedIn is true */}
-        {loggedIn && ( 
-        <li>
-          <Link to="/add-post">Add Post</Link>
-        </li>
+        {/* this will only show if loggedIn is true */}
+        {auth.loggedIn && (
+          <li>
+            <Link to="/add-post">Add Post</Link>
+          </li>
         )}
 
-        {!loggedIn && ( 
+        {!auth.loggedIn && (
           <>
-          <li>
-          <Link to="/login">Log In</Link>
-        </li>
-        <li>
-          <Link to="/add-user">Add User</Link>
-        </li>
-          
+            <li>
+              <Link to="/login">Log In</Link>
+            </li>
+            <li>
+              <Link to="/add-user">Add User</Link>
+            </li>
           </>
         )}
-        
-        {loggedIn && (
+
+        {auth.loggedIn && (
           <li>
-            <a href="/" onClick={() => localStorage.clear()}>
+            {/* <a href="/" onClick={() => localStorage.clear()}> */}
+            <a
+              href="/"
+              onClick={() => {
+                auth.logout();
+                auth.setLoggedIn(false);
+              }}
+            >
               Logout
             </a>
           </li>

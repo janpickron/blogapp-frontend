@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Spinner } from "react-bootstrap";
+// import useAuth hook from App.js
+import { useAuth } from "../App";
 
 const SinglePost = () => {
   const [form, setForm] = useState({});
@@ -11,15 +13,18 @@ const SinglePost = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const auth = useAuth();
+
+  // const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const userLS = localStorage.getItem("User");
 
     if (userLS) {
-      setLoggedIn(true);
+      // setLoggedIn(true);
+      auth.login(JSON.stringify(userLS))
     }
-  }, []);
+  }, [auth]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/single-post/${params.id}`)
@@ -110,7 +115,7 @@ const SinglePost = () => {
       <h1 className="show-title">Title: {form.title} </h1>
       <p className="show-content">Content: {form.content}</p>
 
-      {loggedIn && (
+      {auth.loggedIn && (
         <>
           {showForm && (
             <form className="form">
@@ -176,7 +181,7 @@ const SinglePost = () => {
         </>
       )}
 
-      {loggedIn && (
+      {auth.loggedIn && (
         <>
           <Button className="btn-margin" onClick={handleDeletePost}>
             Delete Post

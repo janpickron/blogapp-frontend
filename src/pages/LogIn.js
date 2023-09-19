@@ -1,11 +1,16 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../App";
 
+// import useAuth hook from App.js
 const LogIn = () => {
   const [form, setForm] = useState({});
-  const [message, setMessage] = useState()
+  const [message, setMessage] = useState();
   const navigate = useNavigate();
+
+  // use useAuth hook to access authentication context
+  const auth = useAuth();
 
   const handleLogIn = (e) => {
     // stop refreshing browser
@@ -27,12 +32,14 @@ const LogIn = () => {
         console.log("data 1 -> ", data === true);
         if (data.isAuthenticated) {
           console.log("User credentials is FOUND.");
-          localStorage.setItem("User", JSON.stringify(data));
-          setMessage("User logging in")
+          // use login function from authentication context
+          auth.login(data);
+          // localStorage.setItem("User", JSON.stringify(data));
+          setMessage("User logging in");
           navigate("/");
         } else {
           console.log("data 2 -> ", data === true);
-          setMessage(data.error)
+          setMessage(data.error);
           navigate("/login");
         }
       })
@@ -89,7 +96,8 @@ const LogIn = () => {
           <div className="btn btn-primary">
             <Button onClick={handleLogIn}>Submit</Button>
           </div>
-          <br /><br />
+          <br />
+          <br />
           <p>{message}</p>
         </form>
       </div>
