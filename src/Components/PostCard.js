@@ -9,7 +9,7 @@ export const PostCard = ({ post, index }) => {
           <Card.Img className="card-img-top"
             variant="top"
             src={`https://source.unsplash.com/random?sig=${index}`}
-            alt=""
+            alt="Different image showing randomly"
           />
           <Card.Title className="card-title-postcard">
             <b>{post.title}</b>
