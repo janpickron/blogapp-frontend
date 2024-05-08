@@ -54,7 +54,7 @@ export default function App() {
       <Route path="/login" element={<LogIn />} /> }
       {!loggedIn && 
       <Route path='/add-user' element={<SignUp />} /> }
-      <Route path="*" element={<h2>Page not Found</h2>} />
+      <Route path="*" element={<h2>Page is not Found</h2>} />
     </Routes>
     <Footer />
     </AuthContext.Provider>

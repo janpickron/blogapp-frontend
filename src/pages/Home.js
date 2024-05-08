@@ -18,7 +18,7 @@ const Home = () => {
   });
   return (
     <div className="container mx-auto">
-      <h1>All Posts</h1>
+      <h1>All Posts available</h1>
       <div className="d-flex flex-wrap justify-content-start last-post">{allPosts}</div>
     </div>
   );
